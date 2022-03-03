@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="MessageEngineInstaller-Java:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/MessageEngineInstaller_Java_jar</output-path>
+  <artifact type="jar" build-on-make="true" name="MessageEngineInstaller-Java:jar">
+    <output-path>$PROJECT_DIR$/build</output-path>
     <root id="archive" name="MessageEngineInstaller-Universial.jar">
       <element id="module-output" name="MessageEngineInstaller-Java" />
     </root>

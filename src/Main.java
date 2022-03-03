@@ -14,6 +14,9 @@ public class Main {
 
             printResults(process);
 
+            System.out.println("Done!");
+            System.exit(0);
+
         } catch (Exception exception) {
             exception.printStackTrace();
         }
