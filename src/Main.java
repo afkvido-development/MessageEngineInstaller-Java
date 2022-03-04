@@ -122,7 +122,7 @@ public class Main {
 
 
 
-        System.out.println("Done!\n\n");
+        System.out.println("Done!\nMessageEngine has been installed to: \n" + System.getenv("HOME") + "/MessageEngine/");
         System.exit(0);
 
     }
@@ -185,7 +185,7 @@ public class Main {
 
 
 
-        System.out.println("Done!\n\n");
+        System.out.println("Done!\nMessageEngine has been installed to: \n" + System.getenv("HOME") + "\\MessageEngine\\\n\n");
         System.exit(0);
 
     }
