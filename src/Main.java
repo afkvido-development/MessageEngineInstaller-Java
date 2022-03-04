@@ -24,11 +24,11 @@ public class Main {
 
 
         if (latestVersion.equals(fail)) {
-            System.out.println("Cannot connect to the MessageEngine API.\nMake sure you have actual internet.\nOr, you might just have an old version. Download a new version here: https://github.com/afkvido-development/MessageEngineInstaller-Java");
+            System.out.println("Cannot connect to the MessageEngine API.\nMake sure you have actual internet.\nOr, you might just have an old version. Download a new version here: https://github.com/afkvido-development/MessageEngineInstaller-Java/releases/latest");
             wait.nextLine();
             System.exit(0);
         } if (!latestVersion.equals(Version)) {
-            System.out.println("You're on an old version of MessageEngine Installer.\nDownload a new version here: https://github.com/afkvido-development/MessageEngineInstaller-Java");
+            System.out.println("You're on an old version of MessageEngine Installer.\nDownload a new version here: https://github.com/afkvido-development/MessageEngineInstaller-Java/releases/latest");
             wait.nextLine();
             System.exit(0);
         } else {
@@ -43,11 +43,37 @@ public class Main {
 
 
 
+        String name = System.getProperty("os.name");
+        System.out.println("OS: " + name);
 
+
+        if (name.equals("Mac OS X")) {
+            MacOS();
+        } else {
+            System.out.println("\nYour operating System, [" + name + "], is not supported.");
+            System.out.print("This might be caused by an old version of this installer. \nYou can check for a newer version here: ");
+            System.out.println("https://github.com/afkvido-development/MessageEngineInstaller-Java/releases/latest");
+            System.out.print("If you're already on the latest version, please file a bug report here: ");
+            System.out.println("https://github.com/afkvido-development/MessageEngineInstaller-Java/issues\n");
+            System.exit(0);
+        }
+
+
+
+
+    }
+
+
+    public static void MacOS () {
+
+
+        // Mac OS X
 
         Process process;
 
-        makeDirectory();
+
+        File f = new File(System.getenv("HOME") + "/MessageEngine");
+        makeDirectory(f);
 
 
         System.out.println("Cloning the License (MPL-2.0)...");
@@ -96,12 +122,76 @@ public class Main {
 
 
 
-        System.out.println("Done!");
+        System.out.println("Done!\n\n");
+        System.exit(0);
 
+    }
+
+    public static void Windows () {
+
+
+        // Windows
+
+        Process process;
+
+
+        File f = new File(System.getenv("HOME") + "\\MessageEngine");
+        makeDirectory(f);
+
+
+        System.out.println("Cloning the License (MPL-2.0)...");
+        try {
+
+            process = Runtime.getRuntime().exec("git clone https://github.com/MessageEngine/LICENSE.git", null, new File (System.getenv("HOME") + "\\MessageEngine"));
+
+            printResults(process);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("Cloned the License (MPL-2.0).");
+
+
+        System.out.println("Cloning the MessageEngine repository...");
+        try {
+
+            process = Runtime.getRuntime().exec("git clone https://github.com/afkvido-development/MessageEngine.git", null, new File (System.getenv("HOME") + "\\MessageEngine\\repositories"));
+
+            printResults(process);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("Cloned the MessageEngine repository.");
+
+
+
+
+
+
+        System.out.println("Cloning the MessageEngine-JARs repository...");
+        try {
+
+            process = Runtime.getRuntime().exec("git clone https://github.com/afkvido-development/MessageEngine-JARs.git", null, new File (System.getenv("HOME") + "\\MessageEngine\\repositories"));
+
+            printResults(process);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("Cloned the MessageEngine-JARs repository.");
+
+
+
+
+
+        System.out.println("Done!\n\n");
+        System.exit(0);
 
     }
 
 
+    /** Print results of process */
     public static void printResults (Process process) {
 
         try {
@@ -115,12 +205,11 @@ public class Main {
         } catch (Exception ignored) {}
     }
 
-    public static void makeDirectory () {
+
+    /** Create Directory */
+    public static void makeDirectory (File f) {
 
 
-
-        //Creating a File object
-        File f = new File(System.getenv("HOME") + "/MessageEngine");
 
 
         //Creating the directory
@@ -138,9 +227,9 @@ public class Main {
 
         //Creating the directory
         boolean bool = file.mkdir();
-        if(bool){
+        if (bool) {
             System.out.println("Made the (home)/MessageEngine/repositories directory");
-        }else{
+        } else {
             System.out.println("Could not make the the (home)/MessageEngine/repositories directory, it might already exist.");
         }
 
@@ -148,8 +237,7 @@ public class Main {
     }
 
 
-
-
+    /** Read a url */
     static String check (String url) {
         String r = fail;
         try {
@@ -159,7 +247,7 @@ public class Main {
 
     }
 
-
+    /** Read a url but it throws an exception */
     static String read (String url) throws Exception {
 
         URL oracle = new URL(url);
@@ -174,5 +262,6 @@ public class Main {
         in.close();
         return r.toString();
     }
+
 
 }
