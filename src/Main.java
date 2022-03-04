@@ -50,7 +50,7 @@ public class Main {
         System.out.println("OS: " + name);
 
 
-        if (name.contains("Mac OS")) {
+        if (name.contains("Mac OS") || name.contains("MacOS")) {
             MacOS();
         } else if (name.contains("Windows")) {
             Windows();
