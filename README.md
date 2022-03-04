@@ -7,4 +7,11 @@ ______
 <img src="https://raw.githubusercontent.com/afkvido/image-repository/ImageRepo/Modern%20Download%20Button.png" width="225"/>
 </a>
 
+<h2>Supported Operating Systems</h2>
+
+- MacOS (ex. Mac OS X)
+- EARLY BETA: Windows (ex. Windows 11 Pro)
+- COMING SOON: Linux (ex. Ubuntu)
+
+
 <h6>documentation is coming SoonTM</h6>
