@@ -6,12 +6,15 @@ import java.util.Scanner;
 
 public class Main {
 
+    /** URLreader failure */
     public final static String fail = "URLreader failed";
 
+
+    /** Version of Installer */
     public final static String Version = "0.1.0";
 
 
-
+    /** This gets run by the JAR */
     public static void main (String[] args) {
 
 
@@ -47,8 +50,12 @@ public class Main {
         System.out.println("OS: " + name);
 
 
-        if (name.equals("Mac OS X")) {
+        if (name.contains("Mac OS")) {
             MacOS();
+        } else if (name.contains("Windows")) {
+            Windows();
+        } else if (name.contains("Linux") || name.contains("Ubuntu")) {
+            Linux();
         } else {
             System.out.println("\nYour operating System, [" + name + "], is not supported.");
             System.out.print("This might be caused by an old version of this installer. \nYou can check for a newer version here: ");
@@ -64,6 +71,11 @@ public class Main {
     }
 
 
+    //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
+
+
+    /** Install for MacOS */
     public static void MacOS () {
 
 
@@ -127,6 +139,11 @@ public class Main {
 
     }
 
+
+    //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
+
+    /** Install for Windows */
     public static void Windows () {
 
 
@@ -189,6 +206,80 @@ public class Main {
         System.exit(0);
 
     }
+
+
+    //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
+
+    /** Install for Linux */
+    public static void Linux () {
+
+        // Linux/Ubuntu
+
+        Process process;
+
+
+        /*
+
+        File f = new File(System.getenv("HOME") + "\\MessageEngine");
+        makeDirectory(f);
+
+
+        System.out.println("Cloning the License (MPL-2.0)...");
+        try {
+
+            process = Runtime.getRuntime().exec("git clone https://github.com/MessageEngine/LICENSE.git", null, new File (System.getenv("HOME") + "\\MessageEngine"));
+
+            printResults(process);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("Cloned the License (MPL-2.0).");
+
+
+        System.out.println("Cloning the MessageEngine repository...");
+        try {
+
+            process = Runtime.getRuntime().exec("git clone https://github.com/afkvido-development/MessageEngine.git", null, new File (System.getenv("HOME") + "\\MessageEngine\\repositories"));
+
+            printResults(process);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("Cloned the MessageEngine repository.");
+
+
+
+
+
+
+        System.out.println("Cloning the MessageEngine-JARs repository...");
+        try {
+
+            process = Runtime.getRuntime().exec("git clone https://github.com/afkvido-development/MessageEngine-JARs.git", null, new File (System.getenv("HOME") + "\\MessageEngine\\repositories"));
+
+            printResults(process);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("Cloned the MessageEngine-JARs repository.");
+
+        System.out.println("Done!\nMessageEngine has been installed to: \n" + System.getenv("HOME") + "\\MessageEngine\\\n\n");
+        System.exit(0);
+
+
+        */
+
+        System.out.println("The Linux/Ubuntu Installer isn't complete yet. \nCheck for a newer release at https://github.com/afkvido-development/MessageEngineInstaller-Java/releases/latest");
+        System.exit(0);
+
+    }
+
+    //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
 
 
     /** Print results of process */
