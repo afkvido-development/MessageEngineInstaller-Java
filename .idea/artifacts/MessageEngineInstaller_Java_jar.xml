@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/build</output-path>
     <root id="archive" name="MessageEngineInstaller-Universial.jar">
       <element id="module-output" name="MessageEngineInstaller-Java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/.version" />
     </root>
   </artifact>
 </component>
